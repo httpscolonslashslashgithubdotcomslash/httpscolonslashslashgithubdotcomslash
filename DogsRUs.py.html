@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>DogsRUs.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DogsRUs.py</font>
+</center></td></tr></table>
+<pre><span class="s0">def </span><span class="s1">drop_off():</span>
+    <span class="s1">dog_name = input(</span><span class="s2">&quot;Enter the name of the dog: &quot;</span><span class="s1">)</span>
+    <span class="s1">roll.append(dog_name)</span>
+
+
+<span class="s0">def </span><span class="s1">pick_up():</span>
+    <span class="s1">dog_name = input(</span><span class="s2">&quot;Enter the name of the dog you want to pick up: &quot;</span><span class="s1">)</span>
+    <span class="s0">if </span><span class="s1">dog_name </span><span class="s0">in </span><span class="s1">roll:</span>
+        <span class="s1">roll.remove(dog_name)</span>
+        <span class="s1">print(</span><span class="s2">f&quot;</span><span class="s0">{</span><span class="s1">dog_name</span><span class="s0">} </span><span class="s2">has been removed from the roll.&quot;</span><span class="s1">)</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s1">print(</span><span class="s2">&quot;Sorry, we have no dog by that name&quot;</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">calc_cost(number):</span>
+    <span class="s1">rate = </span><span class="s3">12.00</span>
+    <span class="s1">hours = int(input(</span><span class="s2">&quot;How many hours to charge for: &quot;</span><span class="s1">))</span>
+    <span class="s1">cost = number * hours * rate</span>
+    <span class="s1">print(</span><span class="s2">f&quot;The cost for </span><span class="s0">{</span><span class="s1">number</span><span class="s0">} </span><span class="s2">of dogs for </span><span class="s0">{</span><span class="s1">hours</span><span class="s0">} </span><span class="s2">hours is $</span><span class="s0">{</span><span class="s1">cost</span><span class="s0">}</span><span class="s2">&quot;</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">print_roll():</span>
+    <span class="s1">print(</span><span class="s2">&quot;Dogs currently staying with DogsRus: &quot;</span><span class="s1">)</span>
+    <span class="s0">for </span><span class="s1">dog </span><span class="s0">in </span><span class="s1">roll:</span>
+        <span class="s1">print(</span><span class="s2">f&quot;</span><span class="s0">\t{</span><span class="s1">dog</span><span class="s0">}</span><span class="s2">&quot;</span><span class="s1">)</span>
+    <span class="s1">print()</span>
+
+
+<span class="s0">def </span><span class="s1">end_program():</span>
+    <span class="s1">print(</span><span class="s2">&quot;Goodbye!&quot;</span><span class="s1">)</span>
+
+
+<span class="s1">roll = []</span>
+
+<span class="s1">print(</span>
+    <span class="s2">&quot;---------------------------------------------------------&quot;</span><span class="s1">)</span>
+<span class="s1">print(</span><span class="s2">&quot;Welcome to DogsRus dog sitting service!&quot;</span><span class="s1">)</span>
+<span class="s1">print(</span><span class="s2">&quot;What would you like to do? Please choose one of the items below&quot;</span><span class="s1">)</span>
+<span class="s1">print(</span>
+    <span class="s2">&quot;---------------------------------------------------------&quot;</span><span class="s1">)</span>
+
+<span class="s1">choice = </span><span class="s3">0</span>
+<span class="s0">while </span><span class="s1">choice != </span><span class="s3">5</span><span class="s1">:</span>
+    <span class="s1">print(</span><span class="s2">&quot;What do you want to do?&quot;</span><span class="s1">)</span>
+    <span class="s1">print()</span>
+    <span class="s1">print(</span><span class="s2">&quot;1 Drop off a dog&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s2">&quot;2 Pick up a dog&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s2">&quot;3 Calculate cost&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s2">&quot;4 Print dog roll&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s2">&quot;5 Exit the system&quot;</span><span class="s1">)</span>
+    <span class="s1">print()</span>
+    <span class="s1">print(</span><span class="s2">&quot;=========================================================&quot;</span><span class="s1">)</span>
+
+    <span class="s1">choice = int(input(</span><span class="s2">&quot;Enter your choice (number between 1 and 5): &quot;</span><span class="s1">))</span>
+    <span class="s0">if </span><span class="s1">choice == </span><span class="s3">1</span><span class="s1">:</span>
+        <span class="s1">drop_off()</span>
+
+    <span class="s0">elif </span><span class="s1">choice == </span><span class="s3">2</span><span class="s1">:</span>
+        <span class="s1">pick_up()</span>
+
+    <span class="s0">elif </span><span class="s1">choice == </span><span class="s3">3</span><span class="s1">:</span>
+        <span class="s1">calc_cost(len(roll))</span>
+
+    <span class="s0">elif </span><span class="s1">choice == </span><span class="s3">4</span><span class="s1">:</span>
+        <span class="s1">print_roll()</span>
+
+    <span class="s0">elif </span><span class="s1">choice == </span><span class="s3">5</span><span class="s1">:</span>
+        <span class="s1">end_program()</span>
+
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s1">print(</span><span class="s2">&quot;Must be an integer between 1 and 5!&quot;</span><span class="s1">)</span></pre>
+</body>
+</html>

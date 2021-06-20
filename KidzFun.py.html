@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>KidzFun.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+KidzFun.py</font>
+</center></td></tr></table>
+<pre><span class="s0">def </span><span class="s1">main():</span>
+    <span class="s1">num_attending_fs = </span><span class="s2">0</span>
+    <span class="s1">num_attending_ak = </span><span class="s2">0</span>
+    <span class="s1">total_age_fs = </span><span class="s2">0</span>
+    <span class="s1">total_age_ak = </span><span class="s2">0</span>
+    <span class="s1">choice = </span><span class="s2">0</span>
+
+    <span class="s0">while </span><span class="s1">choice != </span><span class="s2">3</span><span class="s1">:</span>
+        <span class="s1">print(</span><span class="s3">&quot;What do you want to do?&quot;</span><span class="s1">)</span>
+        <span class="s1">print()</span>
+        <span class="s1">print(</span><span class="s3">&quot;1 Enter data&quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">&quot;2 Display current statistics&quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">&quot;3 Exit the system&quot;</span><span class="s1">)</span>
+        <span class="s1">print()</span>
+        <span class="s1">print(</span><span class="s3">&quot;=&quot; </span><span class="s1">* </span><span class="s2">80</span><span class="s1">)</span>
+        <span class="s0">try</span><span class="s1">:</span>
+            <span class="s1">choice = check_number(</span><span class="s3">&quot;Enter your choice &quot;</span>
+                                  <span class="s3">&quot;(number between 1 and 3): &quot;</span><span class="s1">)</span>
+            <span class="s0">if </span><span class="s1">choice == </span><span class="s2">1</span><span class="s1">:</span>
+                <span class="s1">data = enter_data()</span>
+
+                <span class="s0">if </span><span class="s1">data[</span><span class="s2">0</span><span class="s1">] == </span><span class="s3">&quot;F&quot;</span><span class="s1">:</span>
+                    <span class="s1">total_age_fs += data[</span><span class="s2">1</span><span class="s1">]</span>
+                    <span class="s1">num_attending_fs += </span><span class="s2">1</span>
+
+                <span class="s0">elif </span><span class="s1">data[</span><span class="s2">0</span><span class="s1">] == </span><span class="s3">&quot;A&quot;</span><span class="s1">:</span>
+                    <span class="s1">total_age_ak += data[</span><span class="s2">1</span><span class="s1">]</span>
+                    <span class="s1">num_attending_ak += </span><span class="s2">1</span>
+
+            <span class="s0">elif </span><span class="s1">choice == </span><span class="s2">2</span><span class="s1">:</span>
+                <span class="s1">statistics(num_attending_fs</span><span class="s0">, </span><span class="s1">num_attending_ak</span><span class="s0">, </span><span class="s1">total_age_fs</span><span class="s0">, </span><span class="s1">total_age_ak)</span>
+
+            <span class="s0">elif </span><span class="s1">choice == </span><span class="s2">3</span><span class="s1">:</span>
+                <span class="s1">confirm_exit = input(</span><span class="s3">&quot;Are you sure you want to exit? All data &quot;</span>
+                                     <span class="s3">&quot;will be lost!!</span><span class="s0">\n</span><span class="s3">Enter 'Y' to confirm or &quot;</span>
+                                     <span class="s3">&quot;any other key to go back: &quot;</span><span class="s1">).upper()</span>
+                <span class="s0">if </span><span class="s1">confirm_exit == </span><span class="s3">&quot;Y&quot;</span><span class="s1">:</span>
+                    <span class="s1">statistics(num_attending_fs</span><span class="s0">, </span><span class="s1">num_attending_ak</span><span class="s0">, </span><span class="s1">total_age_fs</span><span class="s0">, </span><span class="s1">total_age_ak)</span>
+                    <span class="s1">end_program()</span>
+                    <span class="s0">break</span>
+                <span class="s0">else</span><span class="s1">:</span>
+                    <span class="s1">choice = </span><span class="s2">0</span>
+            <span class="s0">else</span><span class="s1">:</span>
+                <span class="s1">print(</span><span class="s3">&quot;Must be an integer between 1 and 3&quot;</span><span class="s1">)</span>
+        <span class="s0">except </span><span class="s1">ValueError:</span>
+            <span class="s1">print(</span><span class="s3">&quot;Not a valid choice!&quot;</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">check_number(text):</span>
+    <span class="s1">valid = </span><span class="s0">False</span>
+    <span class="s0">while not </span><span class="s1">valid:</span>
+        <span class="s0">try</span><span class="s1">:</span>
+            <span class="s1">number = int(input(text))</span>
+            <span class="s0">if </span><span class="s1">isinstance(number</span><span class="s0">, </span><span class="s1">int):</span>
+                <span class="s1">valid = </span><span class="s0">True</span>
+                <span class="s0">return </span><span class="s1">number</span>
+        <span class="s0">except </span><span class="s1">ValueError:</span>
+            <span class="s1">print(</span><span class="s3">&quot;Woops...&quot;</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">enter_data():</span>
+    <span class="s1">program = input(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Which programme did the child attend?</span><span class="s0">\n</span><span class="s3">&quot;</span>
+                    <span class="s3">&quot;'F' for Fun in the Sun; or</span><span class="s0">\n</span><span class="s3">&quot;</span>
+                    <span class="s3">&quot;'A' for Active Kids; or </span><span class="s0">\n</span><span class="s3">&quot;</span>
+                    <span class="s3">&quot;any other key to go back: &quot;</span><span class="s1">).upper()</span>
+    <span class="s0">if </span><span class="s1">program == </span><span class="s3">&quot;A&quot; </span><span class="s0">or </span><span class="s1">program == </span><span class="s3">&quot;F&quot;</span><span class="s1">:</span>
+        <span class="s1">question = </span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Input the child's age (in years)</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s1">\</span>
+                   <span class="s3">&quot;NOTE: age must be between 5 and 15: &quot;</span>
+        <span class="s1">age = check_number(question)</span>
+        <span class="s0">while not </span><span class="s2">5 </span><span class="s1">&lt;= age &lt;= </span><span class="s2">15</span><span class="s1">:</span>
+            <span class="s1">age = check_number(question)</span>
+        <span class="s0">return </span><span class="s1">program</span><span class="s0">, </span><span class="s1">age</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s1">print()</span>
+        <span class="s0">return </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s2">0</span>
+
+
+<span class="s0">def </span><span class="s1">statistics(num_attending_fs</span><span class="s0">, </span><span class="s1">num_attending_ak</span><span class="s0">, </span><span class="s1">total_age_fs</span><span class="s0">, </span><span class="s1">total_age_ak):</span>
+    <span class="s0">if </span><span class="s1">num_attending_fs == </span><span class="s2">0</span><span class="s1">:</span>
+        <span class="s1">print(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">The average for the 'Fun in the Sun' programme could not be &quot;</span>
+              <span class="s3">&quot;calculated because no data has been entered for this programme&quot;</span><span class="s1">)</span>
+
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s1">average_age_fs = total_age_fs / num_attending_fs</span>
+        <span class="s1">print(</span><span class="s3">f&quot;</span><span class="s0">\n </span><span class="s3">The average age of children in the 'Active Kids programme &quot;</span>
+              <span class="s3">f&quot;is </span><span class="s0">{</span><span class="s1">round(average_age_fs)</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">f&quot;The total number registered for 'Active Kids is &quot;</span>
+              <span class="s3">f&quot;</span><span class="s0">{</span><span class="s1">num_attending_fs</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s1">)</span>
+
+    <span class="s0">if </span><span class="s1">num_attending_ak == </span><span class="s2">0</span><span class="s1">:</span>
+        <span class="s1">print(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">The average for the 'Active Kids' programme could not be &quot;</span>
+              <span class="s3">&quot;calculated because no data has been entered for this programme&quot;</span><span class="s1">)</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s1">average_age_ak = total_age_ak / num_attending_ak</span>
+        <span class="s1">print(</span><span class="s3">f&quot;</span><span class="s0">\n </span><span class="s3">The average age of children in the 'Active Kids programme &quot;</span>
+              <span class="s3">f&quot;is </span><span class="s0">{</span><span class="s1">round(average_age_ak)</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">f&quot;The total number registered for 'Active Kids is &quot;</span>
+              <span class="s3">f&quot;</span><span class="s0">{</span><span class="s1">num_attending_ak</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">end_program():</span>
+    <span class="s1">print(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Goodbye&quot;</span><span class="s1">)</span>
+
+
+<span class="s1">main()</span>
+</pre>
+</body>
+</html>
